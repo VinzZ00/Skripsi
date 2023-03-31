@@ -1,0 +1,18 @@
+.alert.alert-danger.customNavigation {
+     background-color: #E08989;
+}
+
+.content .titleLabel {
+     padding-top: 30px;
+     padding-left: 20px;
+     background-color: #DDB967;
+     background-image: linear-gradient(#E08989, #DDB967);
+}
+
+.chartDiv {
+     
+}
+
+body {
+     background-color: #8B2635  ;
+}
