@@ -13,12 +13,14 @@
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         
+        var getData = JSON.parse('{{ visual | tojson | safe}}');
+
+        console.log(getData);
+
         // Draw the chart and set the chart values
         function drawChart() {
           var split = "laki-laki"
-
-
-
+          
           var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           ['split', 8],

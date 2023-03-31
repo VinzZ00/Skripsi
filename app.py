@@ -1,11 +1,26 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import request, jsonify
+
+import pandas as pd
+
+# Load Dataset
+dataset = pd.read_csv('Dataset-Deseased.csv', delimiter= ';')
+
+# get required value
+visual = {
+    "1" : str(dataset[dataset['deceased'] == 1].deceased.count()),
+    "0" : str(dataset[dataset['deceased'] == 0].deceased.count()),
+    }
+
 
 app = Flask(__name__) 
 
-@app.route('/') 
+@app.route('/home', methods = ['GET'])
 def home() :
-    return "Welcome Home, Flask Tutorial Mac"
+    
+
+    # visual = {'firstname': "Mr.", 'lastname': "My Father's Son"}
+    return render_template('index.html', visual = visual)
 
 @app.route('/login', methods=['POST'])
 def login() :
