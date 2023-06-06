@@ -35,14 +35,9 @@ class bloodRecord :
         self.mortality = model.predict(modelInput)
         return self.mortality
 
-
-
-
-
 @app.route('/') 
 def home() :
     return render_template('home.html')
->>>>>>> 59e209b (commit 7 juni, model export/import pickle file, flask backend for post form data, and UI for home page)
 
 # @app.route('/post', methods=['POST'])
 # def login() :
