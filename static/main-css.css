@@ -1,0 +1,190 @@
+.customNavBar {
+    background: #BACDDB;
+    height: auto;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 50%;
+  }
+
+  .centered-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+  }
+
+  .custom-gutter {
+      margin-right: -100px;
+      margin-left: -100px;
+  }
+
+  .custom-gutter > .col,
+  .custom-gutter > [class*="col-"] {
+      padding-right: 100px;
+      padding-left: 100px;
+  }
+
+  .content-header {
+    background: linear-gradient(180deg, rgba(208, 43, 43, 0.11) 100%, rgba(206, 89, 89, 0.0176) 100%);
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 165px;
+  }
+
+  .navi-item {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .custom-list {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+
+  .custom-list li {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 24px;
+    height:30px;
+  }
+
+  .custom-list li:before {
+    content: "\2022"; /* Unicode character for bullet point */
+    display: flex;
+    align-items: center;
+    font-size: 70px;
+    padding-bottom: 8px;
+    height: auto;
+    background-image: radial-gradient(circle at center, #FFB7B7 0, #000000 100%);
+    -webkit-background-clip: text; /* Apply gradient to text */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+    margin-right: 3px; /* Add some space between bullet point and text */
+  }
+
+  .center-header{
+    position: relative;
+    padding-left: 11px;
+    height: 350px;
+    width: 309px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .left-header {
+    position: relative;
+    display: inline-block;
+  }
+
+
+  .right-header {
+    position: relative;
+    padding-left: 50;
+    display: inline-block;
+    vertical-align: top;
+    left: 44px;
+  }
+
+  .rectangle-divider {
+    width: 61px;
+    height: 4px;
+    background: #CE5959;
+    margin-bottom: 72px;
+    margin-top: 27px;
+    border-radius: 16px;
+  }
+
+  .body-center-card {
+    background: #CE5959;
+    width: 100%;
+    height: 433px;
+    padding-left: 0px;
+    border-radius: 10px;
+  }
+  
+  .card-text {
+    color: #ffffff;
+  }
+
+  .footer-content {
+    height: auto;
+    align-items: center;
+  }
+
+  .footer-tab {
+    gap: 48px;
+    width: 100%;
+    justify-content:  center;
+    margin-bottom: 30px;
+  }
+  
+  .body-footer {
+    background-image: url(/static/images/background-Footer.png);
+    background-repeat: no-repeat; 
+    width: 100%;
+    margin-top: 114px;
+    padding-left: 75px;
+    padding-top: 84px;
+    padding-bottom: 60px;
+  }
+
+  body{
+    background-color: #F3E8FF;
+    height: auto;
+    overflow: scroll;
+    width: 100%;
+  } 
+
+  .footer-card {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0px;
+    filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.25));
+  }
+
+  .footer-card img {
+    padding-left: 22px;
+    padding-right: 35px;
+  }
+
+  .footer-card h5 {
+    color: #CE5959;
+    width: 425px;
+  }
+  
+  .card-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center-body {
+    height: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 56px;
+  }
+
+  .center-body h3 {
+    text-align: center; font-weight: bold;
+  }
+
+  #btn-start-prog {
+    background-color: #CE5959;
+    color: #ffffff;
+    border: none;
+  }

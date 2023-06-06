@@ -56,6 +56,7 @@
           var chart2 = new google.visualization.ColumnChart(document.getElementById('chart2'));
           chart2.draw(databar, options2)
 
+
           
 
         }
@@ -92,7 +93,6 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light border" style="background-color: #E08989;">
         <a class="navbar-brand border-right border-black pr-2" href="#" style="color: white; font-size: 30px;">Heart Risk Assess</a>
-        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -110,12 +110,20 @@
         </div>
     </nav>
 
-    <div class="content card" style="background-color: #8B2635;">
+    <div class="content card">
         <div class="card-body">
-            <div class="d-flex titleLabel border-bottom-0 border-black">
+            <div class="d-flex titleLabel " 
+            style="
+            
+            margin-bottom : 10%;
+            margin-left : 10%;
+            margin-top: 10%;
+            margin-right: 10%;
+            
+            ">
                 <h1>Data Visualization</h1>
             </div>
-            <div class="d-flex justify-content-center chartDiv " style="background-color: #C7DBE6; background-image: linear-gradient(#DDB967, #c7dbe6, #c7dbe6, #8B2635);">
+            <div class="d-flex justify-content-center chartDiv ">
                 <div id="chart1" class="pr-5"></div>
                 <div id="chart2" class="pl-5"></div>
             </div>
