@@ -1,0 +1,77 @@
+body {
+    height: 100%;
+    background-image: url(../static/images/formBackground.png);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-section {
+    background: linear-gradient(180deg, rgba(208, 43, 43, 0.11) 0%, rgba(206, 89, 89, 0.02) 100%);
+    text-align: center;
+    padding : 311px 415px 473px 415px;
+    height: 1024px;
+  }
+
+  .body-section {
+    position: relatvie;
+    left : 69px;
+    right: 81px;
+    width: 1290px;
+    margin-top  : -304px;
+    background-color: #F3E8FF;
+    border-radius: 20px;
+    border: 1px dashed var(--7-f-0000, #7F0000);
+  }
+
+  .body-section form h2{
+    color: #D02B2B;
+  }
+
+  .data-form {
+    display: flex; 
+    flex-direction: column;
+    padding-top: 20px;
+  }
+
+  .data-form .input-element, .input-element {
+    border-radius: 8px;
+    border: 1px solid #D02B2B;
+    height: 73px;
+    padding: 5px;
+    font-size: 24px;
+    background: none;
+    
+  }
+
+  .blood-input-element {
+    border: 1px solid #D02B2B;
+    background: none;
+    border-radius: 8px;
+    margin-right: 23px;
+  }
+
+  .inner-div label {
+    font-size: 20px;
+    color: #D02B2B;
+  }
+
+  .blood-report {
+    margin-top: 20px;
+  }
+  
+  .blood-form-element {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blood-form-element .inner-div {
+    display: flex; 
+    flex-direction: row; 
+    justify-items: center;
+  }
+
+  #home, #form {
+    cursor: pointer;
+  }
+
+  

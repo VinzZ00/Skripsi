@@ -10,16 +10,13 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/main-css.css">
+    <link rel="stylesheet" href="/static/form-css.css">
 
     <title>Form</title>
 
     <style>
         #form {
             color: #CE5959;
-        }
-
-        body {
-          height: 100%;
         }
     </style>
 
@@ -29,10 +26,261 @@
 
     {% include 'navbar.html' %}
 
+    
+    <div style="height: 2576px; position: relative;">
+      <!-- Header Section -->
+      <div class="container-fluid header-section">
+        <h1>
+          want to get your <span style="color: #D02B2B;">heart</span> checked right now?<br/><br/>this <span style="color: #D02B2B;">early detection</span> bellow
+        </h1>
+      </div>
+
+      <!-- Body Section -->
+      <div class="container body-section">
+        
+      
+      
+        <form class="data-form container" action="http://127.0.0.1:5000/result" method="GET">
+          <h2>Personal Data</h2>
+          Full Name
+          <input class="input-element" type="text" id="fullName" name="fullName" placeholder="what is your name?">
+
+          <!-- Gender Column -->
+          <div class="row" style="margin-top : 40px">
+            <div class="col">
+              gender
+              <div class="row">
+                <div class="col-md-3">
+                  <input type="radio" id="male" name="gender" value="1" checked="true"> 
+                  <label for="male">Male</label>
+                </div>
+                <div class="col-md-3">
+                  <input type="radio" id="female" name="gender" value="0">
+                  <label for="female">female</label>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Age Column -->
+            <div class="col" style="
+                flex-direction: row;
+                align-items: center;
+                display: flex;
+                justify-content: left;
+              ">
+              age
+              <input style="
+                background-color : transparent;
+                border-radius: 8px;
+                border: 1px solid #D02B2B;
+                margin: 0px 5px;"
+              type="number" id="age" name="age" min="1" max="100" value="1">
+              Years old
+            </div>
+          </div>
+
+          <!-- Blood Report -->
+          <div class="blood-report">
+            <h2>Blood Report</h2>
+            <div class="row" >
+              <!-- erythrocytes -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Erythrocytes
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="erythrocytes" id="erythrocytes">
+                    <label for="erythrocytes">cells/mcl</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hemoglobin -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Hemoglobin
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="hemoglobin" id="hemoglobin">
+                    <label for="hemoglobin">g/dl</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" >
+              <!-- thrombocyte -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Thrombocyte
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="thrombocyte" id="thrombocyte">
+                    <label for="thrombocyte">10³/µl</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Leukocytes -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Leukocytes
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="leukocytes" id="leukocytes">
+                    <label for="leukocytes">10³/µl</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" >
+              <!-- Hemaglobin Concentration (khermchc) -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Hemoglobin mass (hermch)
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="hermch" id="hermch">
+                    <label for="hermch">pg</label>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Hemoglobin -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Hemoglobin Concentration (khermchc)
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="khermchc" id="khermchc">
+                    <label for="khermchc">g/dl</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" >
+              <!-- hematocrit -->
+              <div class="col">
+                <div class="blood-form-element">
+                  Hematocrit
+                  <div class="inner-div">
+                    <input class="blood-input-element" type="number" step="0.0001" name="hematocrit" id="hematocrit">
+                    <label for="hematocrit">%</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <input style="
+          margin: 20px 0px;
+          border-radius: 30px;
+          border: 1px solid #D02B2B;
+          color: white;
+          background-color: #CE5959; /* Change this to the desired background color */
+          height: 73px;
+          padding: 5px;
+          font-size: 24px;
+          " type="submit" id="submit" value="Check Now">
+
+          </form>
+      </div>
+    </div>
+    
+  
+
+
+    {% include 'footer.html' %}
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        $('#home').click((e) => {
+          window.location.href = '/'
+        })
+        $("#submit").click((e) => {
+          e.preventDefault();
+          // console.log("Testing Click button") -> this 2 rows is Just debugging nevermind it
+          // console.log("This is erytrosytes : ", $("#erythrocytes").val())
+          let name = $('#fullName').val();
+          let gender = $('input[name="gender"]:checked').val();
+          let age = $('#age').val()
+          let eritrosit = $("#erythrocytes").val();
+          let hemoglobin = $('#hemoglobin').val()
+          let trombosit = $('#thrombocyte').val()
+          let leukosit = $('#leukocytes').val()
+          let hermch = $('#hermch').val()
+          let khermchc = $("#khermchc").val()
+          let hematokrit = $("#hematocrit").val() 
+
+          if (gender === "" ||
+           age === "" ||
+           eritrosit === "" ||
+           hemoglobin === "" || 
+           trombosit === "" || 
+           leukosit === "" ||
+           hermch === "" || 
+           khermchc === "" ||
+           hematokrit === "") {
+            alert("Please enter all the blood report data, due it is needed for the analysis");
+            return;
+           }
+
+          $.ajax({
+             url: '/form',
+            method: 'post', 
+            data: JSON.stringify(
+             {
+               name : name,
+               gender : gender,
+               age : age, 
+               eritrosit : eritrosit,
+               hemoglobin : hemoglobin,
+               trombosit : trombosit,
+               leukosit : leukosit,
+               hermch : hermch,
+               khermchc : khermchc,
+               hematokrit : hematokrit
+             }
+           ),
+           success: function(response) {
+             // Handle the success response
+             console.log(response)
+             window.location.href = '/result'
+           },
+           error: function(xhr, status, error) {
+            // Handle the error response
+             console.log(error);
+             console.log("aneh")
+           }
+          })
+        })
+        
+      })
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+<!-- Trash -->
+
+<!-- <div style="
+          display: flex;
+          
+          
+          color: #1D1D1D;
+          
+          font-size: 40px;
+          font-weight: 500;
+          line-height: normal;
+          letter-spacing: 2px;
+          padding : 311px 415px 473px 415px;
+        ">
+        Want to get your heart checked right now?
+
+        Try these early detection below
+        </div> -->

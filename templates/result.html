@@ -10,27 +10,308 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/main-css.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
-        #result {
-            color: #CE5959;
-        }
-
         body {
           height: 100%;
+          background-image: url(../static/images/formBackground.png);
         }
+
+        .greet {
+          padding-top: 246px;
+          padding-left: 75px;
+        }
+        
+        .dashboard-card {
+          display: flex; 
+          flex-direction: column; 
+          width: 500px; 
+          height: 567.49px; 
+          border-radius: 10px;
+          border: 1px dashed #7F0000; 
+          align-items: center;
+          justify-content: center;
+        }
+
+        .dashboard-card .description {
+          /* text CSS */
+          font-size: 20px;
+          font-weight: normal;
+          text-align: center;
+          padding: 20px;
+        }
+        
+        
     </style>
 
+    
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar','corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        // Ignore if there is error, this is from flask Jinja template.
+
+        // GenderData
+        let maleCase = {{ dashboard['maleCase']|int }};
+        let maleDeath = {{ dashboard['maleDeath']|int }};
+        let femaleCase = {{ dashboard['femaleCase']|int }};
+        let femaleDeath = {{dashboard['femaleDeath']|int }};
+
+        maleCase = maleCase - maleDeath
+        femaleCase = femaleCase - femaleDeath
+
+
+
+        // Age Data
+        var dict = {
+          {% for key, value in dashboard['AgeDashboard'].items() %}
+              '{{ key }}': [{{ value | join(',') }}],
+          {% endfor %}
+        };
+
+        let general = {{ dashboard['InGeneral']|safe }};
+        
+
+        var entries = Object.entries(dict);
+
+        entries.sort(function(a, b) {
+          var keyA = a[0];
+          var keyB = b[0];
+          if (keyA < keyB) {
+            return -1;
+          }
+          if (keyA > keyB) {
+            return 1;
+          }
+          return 0;
+        });
+
+        var ageDict = {};
+        for (var i = 0; i < entries.length; i++) {
+          var key = entries[i][0];
+          var value = entries[i][1];
+          ageDict[key] = value;
+        }
+
+        // Generate Gender Chart
+        var dataGenderChart = google.visualization.arrayToDataTable([
+          ['Gender', 'Total survived', 'Total Death'],
+          ['Male ', maleCase, maleDeath],
+          ['female', femaleCase, femaleDeath],
+        ]);
+
+        var optionsGenderChart = {
+          chart: {
+            title: 'heart Desease and mortality by Age',
+          },
+          backgroundColor: 'transparent',
+          titleTextStyle : {
+            color: "#000000",
+          },
+          vAxis : {
+            gridlines : {
+              color : '#000000'
+            }
+          },
+          width: 408,
+          height: 374,
+          chartArea: {
+            backgroundColor: 'transparent'
+          },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('gender_chart'));
+
+        chart.draw(dataGenderChart, google.charts.Bar.convertOptions(optionsGenderChart));
+
+        // Generate Age Chart 
+
+        let arrayData = [
+          ['Age Range', 'Total survived', 'Total Death']
+        ];
+
+        for (var key in ageDict) {
+          if (ageDict.hasOwnProperty(key)) {
+            var ageRange = key;
+            
+            var item = ageDict[key];
+            var survive = item[0]
+            var dead = item[1]
+
+            arrayData.push([ageRange, survive, dead])
+          }
+        }
+
+        var dataAgeChart = google.visualization.arrayToDataTable(arrayData);
+        var optionsAgeChart = {
+          chart: {
+            title: 'heart Desease and mortality by gender',
+          },
+          backgroundColor: 'transparent',
+          titleTextStyle : {
+            color: "#000000",
+          },
+          vAxis : {
+            gridlines : {
+              color : '#000000'
+            }
+          },
+          width: 900,
+          height: 374,
+          chartArea: {
+            backgroundColor: 'transparent'
+          },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('age_chart'));
+
+        chart.draw(dataAgeChart, google.charts.Bar.convertOptions(optionsAgeChart));
+
+        // General Chart
+        let generalDataArray = [
+          ['Status', 'Peoples'],
+          ['ALive', general[0]],
+          ['Deceased', general[1]]
+        ];
+
+        console.log(generalDataArray);
+
+        var GeneralChartData = google.visualization.arrayToDataTable(generalDataArray);
+
+        var donutOtions = {
+          title: 'Heart Attack Mortalities',
+          pieHole: 0.4,
+          backgroundColor: 'transparent',
+          width : 400,
+          height : 300,
+          chartArea: {
+            backgroundColor: 'transparent',
+            width : 300,
+            height : 300,
+          },
+          legend : {
+            textStyle : {
+              fontSize : 16
+            }
+          }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('general-chart'));
+        chart.draw(GeneralChartData, donutOtions);
+        
+      }
+    </script>
     <title>Result</title>
   </head>
   <body>
     
     {% include 'navbar.html' %}
 
+    <div style="height: 2576px; position: relative;">
+      
+      {% if name != None %}
+        {% if  name != "" %}
+          <h1 class="greet">Hi, {{ name }}!</h1>
+          {% else %}
+          <h1 class="greet">Hello</h1>
+        {% endif %}
+
+        {% else %}
+          <h1 class="greet">Hello</h1>
+      {% endif %}
+
+      
+      
+      <div class="container upper-card" style="
+      display: flex; 
+      flex-direction: row; 
+      margin-top: 119px;
+      width: 1238px;
+      border: 1px dashed #7F0000;
+      background: #EFD3E8;
+      align-items: center;
+      ">
+        <img src="../static/images/jantung_result.png" style="
+          width: 429px;
+          height: 474.882px;
+          margin: 12px, 48px, 23.12px, 24.41px;
+        ">
+        <div style="
+          color: #000;
+          text-align: center;
+          font-size: 48px;
+          font-weight: 500;
+        ">
+          Your heart Desease mortality is predicted <span style="color: #D02B2B;">{{ result }}</span>
+        </div>
+      </div>
+    
+      <div class="container dash-board" style="
+        display: flex;
+        flex-direction: column;
+        background-color: #EFD3E8;
+        opacity: 0.7;
+        width: 1238px;
+        height: 1436px;
+        margin-top: 88px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        padding-top: 49px;
+        padding-left: 25px;
+      ">
+        <h1>The <span style="color: #D02B2B;">Data</span> collected for the machine learning shows that</h1>
+
+        <div style="display: flex; flex-direction: row; gap: 90px; align-items: center; margin-top: 70px;">
+          <!-- Gender Chart -->
+          <div class="dashboard-card">
+            <div id="gender_chart" style="width: fit-content; height: fit-content; padding: 20px;"></div>
+            <div class="description">
+              from the data we can see that how many female patient and male patient that have Atherosclerosis heart desease and how many of them have survive more than 48 hours
+            </div>
+          </div>
+
+          <!-- General Chart -->
+          <div class="dashboard-card">
+            <div id="general-chart" style="width: fit-content; height: fit-content; padding: 20px; margin-top: 40px;"></div>
+            <div class="description" style="margin-top: auto;">
+              from the data we can see that how many female patient and male patient that have Atherosclerosis heart desease and how many of them have survive more than 48 hours
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Age Chart -->
+        <div style="margin-top: 80px; border: 1px dashed #7F0000; border-radius: 10px;">
+          <div id="age_chart" style="width: fit-content; height: fit-content; padding: 20px;"></div>
+          <div class="description" style="margin: 20px; font-size: large; font-weight: normal;">
+            from the data we can see the spread of the Atherosclerosis patient based on age, and how many of them did survived for more than 48 hours
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    
+
+    {% include 'footer.html' %}
 
     <!-- Optional JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(() => {
+        $('#home').click((e) => {
+          window.location.href = '/'
+        })
+
+        $('#form').click((e) => {
+          window.location.href = '/form'
+        })
+      })
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
