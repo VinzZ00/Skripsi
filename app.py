@@ -92,9 +92,9 @@ class bloodRecord :
         modelInput = numpy.array([[self.gender, self.age, self.eritrosit, self.hematokrit, self.hemoglobin, self.mch, self.mchc, self.leukosit, self.trombosit]])
         self.mortality = model.predict(modelInput)
         if self.mortality[0] == 0 :
-            return "predicted to life more than 48 hours"
+            return "Low risk of dying"
         elif self.mortality[0] == 1 :
-            return "high risk of dying less than 48 hours"
+            return "high risk of dying"
         
 
 @app.route('/') 
