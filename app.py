@@ -5,14 +5,6 @@ import requests
 
 import pandas as pd
 from numpy import double
-# # Load Dataset
-# dataset = pd.read_csv('Dataset-Deseased.csv', delimiter= ';')
-
-# # get required value
-# visual = {
-#     "1" : str(dataset[dataset['deceased'] == 1].deceased.count()),
-#     "0" : str(dataset[dataset['deceased'] == 0].deceased.count()),
-#     }
         
 
 app = Flask(__name__) 
