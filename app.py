@@ -126,3 +126,7 @@ def getResult():
         "InGeneral" : data['general']
     })
 
+# define the port
+port = 3000
+if __name__ == '__main__' :
+    app.run(port = port, debug = True)
